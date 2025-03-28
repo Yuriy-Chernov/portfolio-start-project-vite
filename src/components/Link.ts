@@ -2,7 +2,7 @@ import styled, {css} from "styled-components";
 import {theme} from "../styles/Theme.tsx";
 
 export const Link = styled.a<{active?:boolean}>`
-    font-weight: 400 ;
+    font-weight: 400;
     font-size: 14px;
     line-height: 21px;
     letter-spacing: 1px;
@@ -16,7 +16,7 @@ export const Link = styled.a<{active?:boolean}>`
         }
     }
 
-  
+
     &::before {
         content: '';
         display: inline-block;
@@ -24,10 +24,11 @@ export const Link = styled.a<{active?:boolean}>`
 
         position: absolute;
         bottom: 0;
-        left: 0px;
-        right: 0px;
+        left: 0;
+        right: 0;
         z-index: -1;
-        
-        ${props => props.active && css<{active?: boolean}>`
-        height: 10px`}
+        height: 0;
+        transition: ${theme.animations.transition};
+        ${props => props.active && css<{ active?: boolean }>`
+            height: 10px`}
     }`

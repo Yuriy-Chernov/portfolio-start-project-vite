@@ -1,81 +1,44 @@
 import React from 'react';
-import styled from "styled-components";
-import {theme} from "../../../styles/Theme.tsx";
+import {S} from '../HeaderMenu_Styles.ts'
 
-export const Menu: React.FC<{ menuItems: Array<string> }> = (props: { menuItems: Array<string> }) => {
+const items = [
+    {
+        title: 'Home',
+        href: 'home',
+    }, {
+        title:'Skills',
+        href:'skills'
+    }
+
+    , {
+        title: 'Works',
+        href: 'works',
+    }
+    ,
+    {
+        title: 'Testimony',
+        href: 'testimony',
+    },
+
+    {
+        title: 'Contact',
+        href: 'contact',
+    }]
+
+export const Menu: React.FC = () => {
     return (
         <ul>
-            {props.menuItems.map((item: string, index: number) => {
-                return <ListItem key={index}>
-                    <Link href=''>
-                        {item}
-                        <Mask><span>{item}</span></Mask>
-                        <Mask><span>{item}</span></Mask>
-                    </Link>
+            {items.map((item:{href:string,title:string}, index: number) => {
+                return <S.MenuItem key={index}>
+                    <S.NavLink to={`${item.href}`} smooth={true} activeClass="active" spy={true} offset={-3}>
+                        {item.title}
+                        <S.Mask><span>{item.title}</span></S.Mask>
+                        <S.Mask><span>{item.title}</span></S.Mask>
+                    </S.NavLink>
 
-                </ListItem>
+                </S.MenuItem>
             })}
 
         </ul>
     );
 };
-
-const Mask = styled.span`
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: inline-block;
-    height: 50%;
-    overflow-y: hidden;
-    color: ${theme.colors.accent};
-
-    & + & {
-        top: 50%;
-        span{
-            display:inline-block;
-            transform: translateY(-50%);
-        }
-    }
-
-`
-const ListItem = styled.li`
-position: relative;
-    
-&::before{
-    content:'';
-    display: inline-block;
-    height: 3px;
-    background-color: ${theme.colors.accent};
-    
-    position: absolute;
-    top:50%;
-    left: -10px;
-    right: -10px;
-    z-index: 11;    transform:scale(0);
-    transition: all 500ms ease-in-out ;
-}
-    
-
-    
-    
-&:hover {
-    &::before{
-        transform:scale(1);
-    }
-    ${Mask} {
-        transform:skewX(15deg) translateX(5px);
-        color: ${theme.colors.font};   transition: all 500ms ease-in-out ;
- 
-    
-    & + ${Mask}{   transition: all 500ms ease-in-out ;
-        transform:skewX(-15deg) translateX(-5px);
-    }
-}`
-
-const Link = styled.a`
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: 400;
-    font-size: 25px;
-    text-align: center;
-    color: transparent;
-`

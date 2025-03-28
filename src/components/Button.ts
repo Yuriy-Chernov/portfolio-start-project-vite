@@ -18,18 +18,20 @@ export const Button = styled.button`
             height: 100%;
 
         }
+    }
 
-        &::before {
-            content: '';
-            width: 78px;
-            height: 10px;
-            background-color: ${theme.colors.accent};
+    &::before {
+        transition: 0.2s ease-in-out;
+    
 
-            display: inline-block;
-            position: absolute;
-            left: 50%;
-            bottom: 0;
-            z-index: -1;
-            transform: translateX(-50%);
-        }
+    content: '';
+    height: 10px;
+    background-color: ${theme.colors.accent};
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    z-index: -1;
+    transform: translateX(-50%);
+}
 `
