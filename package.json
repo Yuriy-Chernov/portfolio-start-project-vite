@@ -1,6 +1,7 @@
 {
   "name": "portfolio-start-project-vite",
   "private": true,
+  "homepage": "https://yuriy-chernov.github.io/portfolio-start-project-vite",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
